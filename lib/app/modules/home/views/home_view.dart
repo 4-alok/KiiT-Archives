@@ -17,25 +17,27 @@ class HomeView extends GetView<HomeController> {
       length: controller.tabList.length,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text(
+            "Home",
+            style: TextStyle(
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
           actions: [
             IconButton(
-              icon: Icon(Icons.login),
+              icon: Icon(Icons.account_circle_rounded, color: Colors.grey),
               onPressed: () {
                 Get.to(LoginView());
               },
             ),
           ],
           elevation: 0,
-          flexibleSpace: Container(
-            alignment: Alignment.bottomCenter,
-            child: TabBar(
-                isScrollable: true,
-                controller: controller.tabController,
-                tabs: controller.tabs),
-          ),
         ),
-        body: TabBarView(
-          controller: controller.tabController,
+        body: PageView(
+          // controller: controller.tabController,
           physics: BouncingScrollPhysics(),
           children: [
             HomePage(),
